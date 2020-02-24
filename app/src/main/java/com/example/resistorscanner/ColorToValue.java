@@ -1,7 +1,13 @@
-package com.example.resistorscanner.valueGeneration;
+package com.example.resistorscanner;
 
 //Note: This only works for a 4 color resistor and doesn't do anything for tolerance as is
 public class ColorToValue{
+    /**
+     * Converts an array of color strings to the numeric value of the resistor. Does not account for
+     * tolerance band. Only works with 4-band resistor.
+     * @param s Array of Strings representing the colors of the resistors. Must be in all lowercase.
+     * @return integer value of resistor
+     */
     public static int colorValue(String[] s) {
         int[] count = new int[s.length-1];
         for(int i = 0; i < count.length; i++){
