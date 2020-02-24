@@ -1,9 +1,12 @@
 package com.example.resistorscanner.valueGeneration;
-
-//Note: This only works for a 4 color resistor and doesn't do anything for tolerance as is
-public class ColorToValue{
+import java.util.Scanner;
+//Basic Color to Value calculator needs to implement a tolerance feature.
+public class colorToValue{
     public static int colorValue(String[] s) {
-        int[] count = new int[s.length-1];
+        //Creates an Integer array to store the number values from a String Array.
+        //This will store the tens digit, ones digit, and then the factor
+        int[] count = new int[s.length];
+        //runs through each possible color excluding gold and silver
         for(int i = 0; i < count.length; i++){
             if(s[i].equals ("black"))
                 count[i] = 0;
@@ -25,19 +28,38 @@ public class ColorToValue{
                 count[i] = 8;
             else if(s[i].equals ("white"))
                 count[i] = 9;
+            //error statement if color is not found
             else {
                 System.out.println("Error: color not found");
                 return -1;
             }
         }
-        int value;
-        int tens = count[0]*10;
-        int ones = count[1];
-        int multiplier = 1;
+        int value;//value to be returned
+        int tens = count[0]*10;//tens digit
+        int ones = count[1];//ones digit
+        int multiplier = 1;//multiplier will run through a loop to calculate factor
         for(int j = count[2]; j>0; j--){
             multiplier = multiplier*10;
         }
-        value = (tens + ones)*multiplier;
+        value = (tens + ones)*multiplier;//value is created and then returned
         return value;
+    }
+    //Tester method
+    public static void main(String[] args) {
+        //uses a scanner to take 3 string inputs
+        Scanner board = new Scanner(System.in);
+        //prompts user
+        System.out.println("Enter 3 colors to output resistor value.");
+        //takes in a string with three colors (method can work with more, but just testing with three
+        String[] input = new String[3];
+        //Store the values
+        for(int i = 0; i<3; i++)
+            input[i] = board.next();
+        //runs the code
+        int resistorVal = colorValue(input);
+        //if the value is valid, returns the value
+        if(resistorVal != -1)
+        System.out.println(resistorVal + "ohms");
+        board.close();
     }
 }
