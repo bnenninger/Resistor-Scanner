@@ -1,7 +1,14 @@
-package com.example.resistorscanner.valueGeneration;
-import java.util.Scanner;
-//Basic Color to Value calculator needs to implement a tolerance feature.
-public class colorToValue{
+
+package com.example.resistorscanner;
+
+//Note: This only works for a 4 color resistor and doesn't do anything for tolerance as is
+public class ColorToValue{
+    /**
+     * Converts an array of color strings to the numeric value of the resistor. Does not account for
+     * tolerance band. Only works with 4-band resistor.
+     * @param s Array of Strings representing the colors of the resistors. Must be in all lowercase.
+     * @return integer value of resistor
+     */
     public static int colorValue(String[] s) {
         //Creates an Integer array to store the number values from a String Array.
         //This will store the tens digit, ones digit, and then the factor
@@ -43,23 +50,5 @@ public class colorToValue{
         }
         value = (tens + ones)*multiplier;//value is created and then returned
         return value;
-    }
-    //Tester method
-    public static void main(String[] args) {
-        //uses a scanner to take 3 string inputs
-        Scanner board = new Scanner(System.in);
-        //prompts user
-        System.out.println("Enter 3 colors to output resistor value.");
-        //takes in a string with three colors (method can work with more, but just testing with three
-        String[] input = new String[3];
-        //Store the values
-        for(int i = 0; i<3; i++)
-            input[i] = board.next();
-        //runs the code
-        int resistorVal = colorValue(input);
-        //if the value is valid, returns the value
-        if(resistorVal != -1)
-        System.out.println(resistorVal + "ohms");
-        board.close();
     }
 }
