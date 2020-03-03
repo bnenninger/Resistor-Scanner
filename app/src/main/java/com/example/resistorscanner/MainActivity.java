@@ -1,7 +1,9 @@
 package com.example.resistorscanner;
 
+import android.graphics.Camera;
 import android.os.Bundle;
 
+import android.provider.MediaStore;
 import android.util.Log;
 //import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -9,6 +11,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -21,6 +24,8 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import org.opencv.android.OpenCVLoader;
+
+import static android.hardware.Camera.open;
 //import androidx.navigation.NavController;
 //import androidx.navigation.Navigation;
 //import androidx.navigation.ui.AppBarConfiguration;
@@ -37,6 +42,8 @@ public class MainActivity extends AppCompatActivity implements OnItemSelectedLis
             Log.d(TAG, "OpenCV loaded");
         }
     }
+
+    private View view;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,6 +94,10 @@ public class MainActivity extends AppCompatActivity implements OnItemSelectedLis
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
+
+    }
+
+    public void camera(View view) {
 
     }
 }
