@@ -12,14 +12,14 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/navigation_camera"
         android:name="com.example.resistorscanner.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
+        android:label="Camera"
         tools:layout="@layout/fragment_dashboard" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/navigation_history"
         android:name="com.example.resistorscanner.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
+        android:label="History"
         tools:layout="@layout/fragment_notifications" />
 </navigation>
