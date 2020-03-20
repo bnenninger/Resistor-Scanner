@@ -5,7 +5,7 @@ android {
     buildToolsVersion "29.0.3"
     defaultConfig {
         applicationId "com.example.resistorscanner"
-        minSdkVersion 21
+        minSdkVersion 24//must be 24 so can do Math.floorMod() and Math.floorDiv()
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
