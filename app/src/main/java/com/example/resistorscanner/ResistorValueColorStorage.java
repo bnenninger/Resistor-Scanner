@@ -12,6 +12,10 @@ public class ResistorValueColorStorage implements ResistorValue {
     private final int multiplierExponent;
     private final String tolerance;
 
+    /**
+     * Creates a new storage object for resistor values
+     * @param colors List of the color bands of the resistor
+     */
     public ResistorValueColorStorage(List<ColorValue> colors){
         this.colors = colors;
         int numBands = colors.size();
