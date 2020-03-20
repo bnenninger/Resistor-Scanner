@@ -1,18 +1,20 @@
 package com.example.resistorscanner;
 
 public enum ColorValue {
+    // All values based on the resistor color value chart on Wikipedia
+    // https://en.wikipedia.org/wiki/Electronic_color_code#Resistors
     BLACK   (0,     null,   true,   true,   false),
     BROWN   (1,     "1",    true,   true,   true),
     RED     (2,     "2",    true,   true,   true),
-    ORANGE  (3,     null,   true,   true,   false),
-    YELLOW  (4,     null,   true,   true,   false),
+    ORANGE  (3,     "0.05", true,   true,   true),
+    YELLOW  (4,     "0.02",   true, true,   true),
     GREEN   (5,     "0.5",  true,   true,   true),
     BLUE    (6,     "0.25", true,   true,   true),
-    VIOLET  (7,     "0.10", true,   true,   true),
-    GREY    (8,     "0.05", true,   true,  true),
-    WHITE   (9,     null,   true,   true,  false),
-    GOLD    (-1,    "5",    false,  true,  true),
-    SILVER  (-2,    "10",   false,  true,  true);
+    VIOLET  (7,     "0.1", true,    true,   true),
+    GREY    (8,     "0.01", true,   true,   true),
+    WHITE   (9,     null,   true,   true,   false),
+    GOLD    (-1,    "5",    false,  true,   true),
+    SILVER  (-2,    "10",   false,  true,   true);
 
 
     private final int value;

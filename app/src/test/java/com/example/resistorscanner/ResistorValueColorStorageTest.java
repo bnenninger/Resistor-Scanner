@@ -16,7 +16,8 @@ This class is a parameterized test. Information regarding how this works (and ge
 information) can be found at the following link:
 https://www.vogella.com/tutorials/JUnit/article.html
 Parameterized test information is under the header "4.5. Parameterized test"
-The method for creating the test data is copied exactly, there are likely other ways to do this.
+The overall method for creating the test data is copied, there are likely other ways to do this.
+Comments and exact initialization are specific to this class
  */
 @RunWith(Parameterized.class)
 public class ResistorValueColorStorageTest {
