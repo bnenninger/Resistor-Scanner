@@ -13,6 +13,7 @@ import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -25,6 +26,8 @@ import androidx.navigation.ui.NavigationUI;
 
 import org.opencv.android.OpenCVLoader;
 
+import java.util.ArrayList;
+
 import static android.hardware.Camera.open;
 //import androidx.navigation.NavController;
 //import androidx.navigation.Navigation;
@@ -32,6 +35,14 @@ import static android.hardware.Camera.open;
 //import androidx.navigation.ui.NavigationUI;
 
 public class MainActivity extends AppCompatActivity implements OnItemSelectedListener {
+
+    ArrayList<String> bandValues = new ArrayList<String>();
+    String[] bandArray = new String[bandValues.size()];
+    String spinnerText1;
+    String spinnerText2;
+    String spinnerText3;
+    String spinnerText4 = "gold";
+    TextView display;
 
     private static final String TAG = "MainActivity";
 
@@ -42,8 +53,6 @@ public class MainActivity extends AppCompatActivity implements OnItemSelectedLis
             Log.d(TAG, "OpenCV loaded");
         }
     }
-
-    private View view;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,9 +91,16 @@ public class MainActivity extends AppCompatActivity implements OnItemSelectedLis
         Spinner3.setAdapter(adapter3);
         Spinner3.setOnItemSelectedListener(this);
 
+        spinnerText1 = Spinner1.getSelectedItem().toString();
+        spinnerText2 = Spinner2.getSelectedItem().toString();
+        spinnerText3 = Spinner3.getSelectedItem().toString();
 
+        bandValues.add(spinnerText1);
+        bandValues.add(spinnerText2);
+        bandValues.add(spinnerText3);
+
+        display = (TextView)findViewById(R.id.display);
     }
-
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -97,7 +113,14 @@ public class MainActivity extends AppCompatActivity implements OnItemSelectedLis
 
     }
 
-    public void camera(View view) {
-
+    public void convert(View view)
+    {
+       for(int i = 0; i < bandValues.size(); i++)
+       {
+           bandArray[i] = bandValues.get(i);
+       }
+       display.setTextSize(25);
+       display.setText(ColorToValue.colorValue(bandArray));
     }
+
 }
