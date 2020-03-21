@@ -1,9 +1,7 @@
 package com.example.resistorscanner;
 
-import android.graphics.Camera;
 import android.os.Bundle;
 
-import android.provider.MediaStore;
 import android.util.Log;
 //import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -11,7 +9,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,12 +33,8 @@ import static android.hardware.Camera.open;
 
 public class MainActivity extends AppCompatActivity implements OnItemSelectedListener {
 
-    ArrayList<String> bandValues = new ArrayList<String>();
-    String[] bandArray = new String[bandValues.size()];
-    String spinnerText1;
-    String spinnerText2;
-    String spinnerText3;
-    String spinnerText4 = "gold";
+    Spinner spinner1, spinner2, spinner3;
+
     TextView display;
 
     private static final String TAG = "MainActivity";
@@ -74,32 +67,28 @@ public class MainActivity extends AppCompatActivity implements OnItemSelectedLis
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
 
-        Spinner Spinner1 = (Spinner) findViewById(R.id.spinner1);
+        spinner1 = (Spinner) findViewById(R.id.spinner1);
         ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(this, R.array.colors, android.R.layout.simple_spinner_item);
         adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        Spinner1.setAdapter(adapter1);
-        Spinner1.setOnItemSelectedListener(this);
+        spinner1.setAdapter(adapter1);
+        spinner1.setOnItemSelectedListener(this);
 
-        Spinner Spinner2 = (Spinner) findViewById(R.id.spinner2);
+        spinner2 = (Spinner) findViewById(R.id.spinner2);
         adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        Spinner2.setAdapter(adapter1);
-        Spinner2.setOnItemSelectedListener(this);
+        spinner2.setAdapter(adapter1);
+        spinner2.setOnItemSelectedListener(this);
 
-        Spinner Spinner3 = (Spinner) findViewById(R.id.spinner3);
+        spinner3 = (Spinner) findViewById(R.id.spinner3);
         ArrayAdapter<CharSequence> adapter3 = ArrayAdapter.createFromResource(this, R.array.colors, android.R.layout.simple_spinner_item);
         adapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        Spinner3.setAdapter(adapter3);
-        Spinner3.setOnItemSelectedListener(this);
+        spinner3.setAdapter(adapter3);
+        spinner3.setOnItemSelectedListener(this);
 
-        spinnerText1 = Spinner1.getSelectedItem().toString();
-        spinnerText2 = Spinner2.getSelectedItem().toString();
-        spinnerText3 = Spinner3.getSelectedItem().toString();
-
-        bandValues.add(spinnerText1);
-        bandValues.add(spinnerText2);
-        bandValues.add(spinnerText3);
 
         display = (TextView)findViewById(R.id.display);
+        display.setTextSize(25);
+
+
     }
 
     @Override
@@ -115,12 +104,15 @@ public class MainActivity extends AppCompatActivity implements OnItemSelectedLis
 
     public void convert(View view)
     {
-       for(int i = 0; i < bandValues.size(); i++)
-       {
-           bandArray[i] = bandValues.get(i);
-       }
-       display.setTextSize(25);
-       display.setText(ColorToValue.colorValue(bandArray));
+        ArrayList<ColorValue> bands = new ArrayList<>();
+        bands.add(ColorValue.valueOf(spinner1.getSelectedItem().toString().toUpperCase()));
+        bands.add(ColorValue.valueOf(spinner2.getSelectedItem().toString().toUpperCase()));
+        bands.add(ColorValue.valueOf(spinner3.getSelectedItem().toString().toUpperCase()));
+
+        ResistorValue colorStorage = new ResistorValueColorStorage(bands);
+        display.setText(colorStorage.outputStringValue());
+
+//       display.setText(ColorToValue.colorValue(bandArray));
     }
 
 }

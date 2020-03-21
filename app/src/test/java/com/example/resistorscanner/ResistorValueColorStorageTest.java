@@ -128,4 +128,6 @@ public class ResistorValueColorStorageTest {
         //unicode 2126 is the ohm sign
         return String.format("%s \u00B1%s%% %s\u2126", numberValues, tolerance,prefix);
     }
+
+
 }
