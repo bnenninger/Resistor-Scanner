@@ -33,27 +33,14 @@ import static android.hardware.Camera.open;
 
 public class MainActivity extends AppCompatActivity implements OnItemSelectedListener {
 
-    Spinner spinner1, spinner2, spinner3;
+    Spinner spinner1, spinner2, spinner3, spinner4;
 
     TextView display;
 
     private static final String TAG = "MainActivity";
 
-    static {
-        if(!OpenCVLoader.initDebug()){
-            Log.d(TAG, "OpenCV not loaded");
-        } else {
-            Log.d(TAG, "OpenCV loaded");
-        }
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        if(!OpenCVLoader.initDebug()){
-            Log.d(TAG, "OpenCV not loaded");
-        } else {
-            Log.d(TAG, "OpenCV loaded");
-        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -74,15 +61,16 @@ public class MainActivity extends AppCompatActivity implements OnItemSelectedLis
         spinner1.setOnItemSelectedListener(this);
 
         spinner2 = (Spinner) findViewById(R.id.spinner2);
-        adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner2.setAdapter(adapter1);
         spinner2.setOnItemSelectedListener(this);
 
         spinner3 = (Spinner) findViewById(R.id.spinner3);
-        ArrayAdapter<CharSequence> adapter3 = ArrayAdapter.createFromResource(this, R.array.colors, android.R.layout.simple_spinner_item);
-        adapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner3.setAdapter(adapter3);
+        spinner3.setAdapter(adapter1);
         spinner3.setOnItemSelectedListener(this);
+
+        spinner4 = (Spinner) findViewById(R.id.spinner4);
+        spinner4.setAdapter(adapter1);
+        spinner4.setOnItemSelectedListener(this);
 
 
         display = (TextView)findViewById(R.id.display);
@@ -108,6 +96,7 @@ public class MainActivity extends AppCompatActivity implements OnItemSelectedLis
         bands.add(ColorValue.valueOf(spinner1.getSelectedItem().toString().toUpperCase()));
         bands.add(ColorValue.valueOf(spinner2.getSelectedItem().toString().toUpperCase()));
         bands.add(ColorValue.valueOf(spinner3.getSelectedItem().toString().toUpperCase()));
+        bands.add(ColorValue.valueOf(spinner4.getSelectedItem().toString().toUpperCase()));
 
         ResistorValue colorStorage = new ResistorValueColorStorage(bands);
         display.setText(colorStorage.outputStringValue());
