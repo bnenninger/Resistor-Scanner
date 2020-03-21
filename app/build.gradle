@@ -5,7 +5,7 @@ android {
     buildToolsVersion "29.0.3"
     defaultConfig {
         applicationId "com.example.resistorscanner"
-        minSdkVersion 21
+        minSdkVersion 24//must be 24 so can do Math.floorMod() and Math.floorDiv()
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -16,6 +16,12 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+    }
+    //Allows lambdas to be used for exception testing
+    //The alternatives to lambdas are much messier
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
     }
 }
 
