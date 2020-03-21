@@ -1,5 +1,6 @@
 package com.example.resistorscanner;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import android.util.Log;
@@ -55,21 +56,24 @@ public class MainActivity extends AppCompatActivity implements OnItemSelectedLis
         NavigationUI.setupWithNavController(navView, navController);
 
         spinner1 = (Spinner) findViewById(R.id.spinner1);
-        ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(this, R.array.colors, android.R.layout.simple_spinner_item);
-        adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner1.setAdapter(adapter1);
+//        ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(this, R.array.colors, android.R.layout.simple_spinner_item);
+//        adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        ArrayAdapter<ColorValue> valueColors = new ArrayAdapter<ColorValue>(this, android.R.layout.simple_spinner_dropdown_item, ColorValue.getValueColors());
+        spinner1.setAdapter(valueColors);
         spinner1.setOnItemSelectedListener(this);
 
         spinner2 = (Spinner) findViewById(R.id.spinner2);
-        spinner2.setAdapter(adapter1);
+        spinner2.setAdapter(valueColors);
         spinner2.setOnItemSelectedListener(this);
 
         spinner3 = (Spinner) findViewById(R.id.spinner3);
-        spinner3.setAdapter(adapter1);
+        ArrayAdapter<ColorValue> exponentColors = new ArrayAdapter<ColorValue>(this, android.R.layout.simple_spinner_dropdown_item, ColorValue.getExponentColors());
+        spinner3.setAdapter(exponentColors);
         spinner3.setOnItemSelectedListener(this);
 
         spinner4 = (Spinner) findViewById(R.id.spinner4);
-        spinner4.setAdapter(adapter1);
+        ArrayAdapter<ColorValue> toleranceColors = new ArrayAdapter<ColorValue>(this, android.R.layout.simple_spinner_dropdown_item, ColorValue.getToleranceColors());
+        spinner4.setAdapter(toleranceColors);
         spinner4.setOnItemSelectedListener(this);
 
 
@@ -83,6 +87,8 @@ public class MainActivity extends AppCompatActivity implements OnItemSelectedLis
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         String text = parent.getItemAtPosition(position).toString();
         Toast.makeText(parent.getContext(), text, Toast.LENGTH_SHORT).show();
+
+        convert();
     }
 
     @Override
@@ -92,6 +98,10 @@ public class MainActivity extends AppCompatActivity implements OnItemSelectedLis
 
     public void convert(View view)
     {
+        convert();
+    }
+
+    public void convert(){
         ArrayList<ColorValue> bands = new ArrayList<>();
         bands.add(ColorValue.valueOf(spinner1.getSelectedItem().toString().toUpperCase()));
         bands.add(ColorValue.valueOf(spinner2.getSelectedItem().toString().toUpperCase()));
@@ -100,8 +110,6 @@ public class MainActivity extends AppCompatActivity implements OnItemSelectedLis
 
         ResistorValue colorStorage = new ResistorValueColorStorage(bands);
         display.setText(colorStorage.outputStringValue());
-
-//       display.setText(ColorToValue.colorValue(bandArray));
     }
 
 }

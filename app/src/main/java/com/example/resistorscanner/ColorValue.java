@@ -1,20 +1,27 @@
 package com.example.resistorscanner;
 
+import android.graphics.Color;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+
 public enum ColorValue {
     // All values based on the resistor color value chart on Wikipedia
     // https://en.wikipedia.org/wiki/Electronic_color_code#Resistors
-    BLACK   (0,     null,   true,   true,   false),
-    BROWN   (1,     "1",    true,   true,   true),
-    RED     (2,     "2",    true,   true,   true),
-    ORANGE  (3,     "0.05", true,   true,   true),
-    YELLOW  (4,     "0.02",   true, true,   true),
-    GREEN   (5,     "0.5",  true,   true,   true),
-    BLUE    (6,     "0.25", true,   true,   true),
-    VIOLET  (7,     "0.1", true,    true,   true),
-    GREY    (8,     "0.01", true,   true,   true),
-    WHITE   (9,     null,   true,   true,   false),
-    GOLD    (-1,    "5",    false,  true,   true),
-    SILVER  (-2,    "10",   false,  true,   true);
+    BLACK   (0,  null,   true,  true,  false),
+    BROWN   (1,  "1",    true,  true,  true),
+    RED     (2,  "2",    true,  true,  true),
+    ORANGE  (3,  "0.05", true,  true,  true),
+    YELLOW  (4,  "0.02", true,  true,  true),
+    GREEN   (5,  "0.5",  true,  true,  true),
+    BLUE    (6,  "0.25", true,  true,  true),
+    VIOLET  (7,  "0.1",  true,  true,  true),
+    GREY    (8,  "0.01", true,  true,  true),
+    WHITE   (9,  null,   true,  true,  false),
+    GOLD    (-1, "5",    false, true,  true),
+    SILVER  (-2, "10",   false, true,  true),
+    NONE    (-4, "20",   false, false, true);
 
 
     private final int value;
@@ -101,5 +108,50 @@ public enum ColorValue {
             throw new UnsupportedOperationException("getTolerance attempted on color that does not represent tolerance, " + this.name());
         }
         return tolerance;
+    }
+
+    /**
+     * Returns an array of all ColorValues that can represent values
+     * @return array of all colors that can be values
+     */
+    public static ColorValue[] getValueColors(){
+        ArrayList<ColorValue> colors = new ArrayList<ColorValue>(Arrays.asList(ColorValue.values()));
+        Iterator<ColorValue> iterator = colors.iterator();
+        while(iterator.hasNext()){
+            if(!iterator.next().isValue()){
+                iterator.remove();
+            }
+        }
+        return colors.toArray(new ColorValue[0]);
+    }
+
+    /**
+     * Returns an array of all ColorValues that can represent exponents
+     * @return array of all colors that can be exponents
+     */
+    public static ColorValue[] getExponentColors(){
+        ArrayList<ColorValue> colors = new ArrayList<ColorValue>(Arrays.asList(ColorValue.values()));
+        Iterator<ColorValue> iterator = colors.iterator();
+        while(iterator.hasNext()){
+            if(!iterator.next().isExponent()){
+                iterator.remove();
+            }
+        }
+        return colors.toArray(new ColorValue[0]);
+    }
+
+    /**
+     * Returns an array of all ColorValues that can represent tolerances
+     * @return array of all colors that can be tolerances
+     */
+    public static ColorValue[] getToleranceColors(){
+        ArrayList<ColorValue> colors = new ArrayList<ColorValue>(Arrays.asList(ColorValue.values()));
+        Iterator<ColorValue> iterator = colors.iterator();
+        while(iterator.hasNext()){
+            if(!iterator.next().isTolerance()){
+                iterator.remove();
+            }
+        }
+        return colors.toArray(new ColorValue[0]);
     }
 }
