@@ -66,21 +66,26 @@ public class MainActivity extends AppCompatActivity implements OnItemSelectedLis
         NavigationUI.setupWithNavController(navView, navController);
 
         Spinner Spinner1 = (Spinner) findViewById(R.id.spinner1);
-        ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(this, R.array.colors, android.R.layout.simple_spinner_item);
-        adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        Spinner1.setAdapter(adapter1);
+        ArrayAdapter<CharSequence> adapterValues = ArrayAdapter.createFromResource(this, R.array.colorsValues, android.R.layout.simple_spinner_item);
+        adapterValues.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        Spinner1.setAdapter(adapterValues);
         Spinner1.setOnItemSelectedListener(this);
 
         Spinner Spinner2 = (Spinner) findViewById(R.id.spinner2);
-        adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        Spinner2.setAdapter(adapter1);
+        adapterValues.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        Spinner2.setAdapter(adapterValues);
         Spinner2.setOnItemSelectedListener(this);
 
         Spinner Spinner3 = (Spinner) findViewById(R.id.spinner3);
-        ArrayAdapter<CharSequence> adapter3 = ArrayAdapter.createFromResource(this, R.array.colors, android.R.layout.simple_spinner_item);
-        adapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        Spinner3.setAdapter(adapter3);
+        adapterValues.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        Spinner3.setAdapter(adapterValues);
         Spinner3.setOnItemSelectedListener(this);
+
+        Spinner Spinner4 = (Spinner) findViewById(R.id.spinner4);
+        ArrayAdapter<CharSequence> adapterTolerance = ArrayAdapter.createFromResource(this, R.array.colorsTolerance, android.R.layout.simple_spinner_item);
+        adapterTolerance.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        Spinner4.setAdapter(adapterTolerance);
+        Spinner4.setOnItemSelectedListener(this);
 
 
     }
