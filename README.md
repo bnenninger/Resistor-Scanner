@@ -1,6 +1,6 @@
 # Resistor-Scanner
 
-Resistor Scanner is an Android app for using a camera to find a resistor value.
+Resistor Scanner is an Android app for converting resistor color bands to a value. Currently this works by a person manually entering the color bands. Later goals include using a camera to find a resistor value.
 
 ## Project Viewing and Editing
 
@@ -12,4 +12,4 @@ The project is intended for Android SDK 28 (Android 9), and has a minimum SDK le
   - Minimum version 24, but intended for version 28 (Android 9)
 - Java Development Kit 1.8
 - Gradle for building, which is included with the Android Studio install.
-- OpenCV is a dependency, but is loaded into the repository so no external library is needed.
+- OpenCV is not currently a dependency of the project and is not needed, this may change in future versions.

@@ -1,2 +1,2 @@
-include ':app', ':OpenCV'
+include ':app'
 rootProject.name='Resistor Scanner'

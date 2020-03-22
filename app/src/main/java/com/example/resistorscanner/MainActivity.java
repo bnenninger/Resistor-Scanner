@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity implements OnItemSelectedLis
         spinner2 = (Spinner) findViewById(R.id.spinner2);
         spinner2.setAdapter(valueColors);
         spinner2.setOnItemSelectedListener(this);
-        
+
         spinner3 = (Spinner) findViewById(R.id.spinner3);
         spinner3.setAdapter(exponentColors);
         spinner3.setOnItemSelectedListener(this);
