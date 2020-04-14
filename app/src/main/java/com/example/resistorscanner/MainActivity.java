@@ -5,6 +5,7 @@ import android.os.Bundle;
 //import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import android.util.Log;
+
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
@@ -47,8 +48,7 @@ public class MainActivity extends AppCompatActivity {//implements View.OnClickLi
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
-
-
+        
         //sets up history object
         //uses linkedlist for fast adding to front of the list
         history = new LinkedList<ResistorValue>();
