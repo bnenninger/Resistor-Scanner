@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+
 import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -29,34 +30,34 @@ public class NotificationsFragment extends Fragment {
     ArrayAdapter adapter;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
-            ViewGroup container, Bundle savedInstanceState) {
+                             ViewGroup container, Bundle savedInstanceState) {
 
         View root = inflater.inflate(R.layout.fragment_notifications, container, false);
 
-            listView =  root.findViewById(R.id.list_view);
+        listView = root.findViewById(R.id.list_view);
 
-            list.add("Hello");
-            list.add("Test");
-            list.add("1200");
-            list.add("150");
-            list.add("250");
-            list.add("45000");
-            list.add("37000");
-            list.add("180000");
-            list.add("10");
-            list.add("490");
-            list.add("1500");
-            list.add("2900");
-            list.add("1000000");
-            list.add("Hey it scrolls down");
-            list.add("25");
-            list.add("650");
-            list.add("900");
-            list.add("1000");
+        list.add("Hello");
+        list.add("Test");
+        list.add("1200");
+        list.add("150");
+        list.add("250");
+        list.add("45000");
+        list.add("37000");
+        list.add("180000");
+        list.add("10");
+        list.add("490");
+        list.add("1500");
+        list.add("2900");
+        list.add("1000000");
+        list.add("Hey it scrolls down");
+        list.add("25");
+        list.add("650");
+        list.add("900");
+        list.add("1000");
 
-            adapter = new ArrayAdapter(requireNonNull(this.getContext()), android.R.layout.simple_list_item_1, list);
+        adapter = new ArrayAdapter(requireNonNull(this.getContext()), android.R.layout.simple_list_item_1, list);
 
-            listView.setAdapter(adapter);
+        listView.setAdapter(adapter);
 
         return root;
     }
