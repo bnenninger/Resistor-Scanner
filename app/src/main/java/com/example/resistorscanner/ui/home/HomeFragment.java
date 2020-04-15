@@ -22,16 +22,20 @@ import com.example.resistorscanner.MainActivity;
 import com.example.resistorscanner.R;
 import com.example.resistorscanner.ResistorValue;
 import com.example.resistorscanner.ResistorValueColorStorage;
+import com.example.resistorscanner.ResistorValueSource;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import static java.util.Objects.*;
 
-public class HomeFragment extends Fragment implements AdapterView.OnItemSelectedListener {
+public class HomeFragment extends Fragment implements AdapterView.OnItemSelectedListener, ResistorValueSource {
 
     Spinner spinner1, spinner2, spinner3, spinner4;
     TextView display;
+    //the currently displayed resistor value
+    private ResistorValue currentValue;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -66,13 +70,11 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemSelected
         display = (TextView) root.findViewById(R.id.display2);
         display.setTextSize(25);
 
-        return root;
-    }
+        //passes an instance of this object as a ResistorValueSource to the MainActivity
+        MainActivity activity = (MainActivity)this.getActivity();
+        activity.setResistorValueSource(this);
 
-    //action that activates when the button is pressed
-    //TODO make this save to history, as conversion happens automatically
-    public void convert(View view) {
-        convert();
+        return root;
     }
 
     public void convert() {
@@ -86,6 +88,7 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemSelected
 
         //creates a colorStorage object to convert the value
         ResistorValue colorStorage = new ResistorValueColorStorage(bands);
+        currentValue = colorStorage;
         display.setText(colorStorage.outputStringValue());
     }
 
@@ -100,4 +103,11 @@ public class HomeFragment extends Fragment implements AdapterView.OnItemSelected
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
+
+    @Override
+    public ResistorValue getCurrentValue() {
+        return currentValue;
+    }
+
+
 }
