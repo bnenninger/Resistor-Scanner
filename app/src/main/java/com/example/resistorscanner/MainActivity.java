@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {//implements View.OnClickLi
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
-        
+
         //sets up history object
         //uses linkedlist for fast adding to front of the list
         history = new LinkedList<ResistorValue>();
