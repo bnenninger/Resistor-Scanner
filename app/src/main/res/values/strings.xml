@@ -3,7 +3,7 @@
     <string name="title_home">Home</string>
     <string name="title_camera">Camera</string>
     <string name="title_history">History</string>
-    <string-array name="colorsValues">
+    <string-array name="colors">
         <item>Black</item>
         <item>Brown</item>
         <item>Red</item>
@@ -14,8 +14,6 @@
         <item>Violet</item>
         <item>Grey</item>
         <item>White</item>
-    </string-array>
-    <string-array name="colorsTolerance">
         <item>Gold</item>
         <item>Silver</item>
     </string-array>
