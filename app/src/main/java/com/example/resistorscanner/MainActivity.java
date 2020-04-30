@@ -6,6 +6,9 @@ import android.util.Log;
 
 import android.view.View;
 
+
+import com.example.resistorscanner.ui.home.HomeFragment;
+import com.example.resistorscanner.ui.notifications.ValueHistoryReceiver;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
     private List<ResistorValue> history;
     private ResistorValueSource valueSource;
+    private ValueHistoryReceiver valueHistoryReceiver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,5 +75,18 @@ public class MainActivity extends AppCompatActivity {
      */
     public void setResistorValueSource(ResistorValueSource source) {
         valueSource = source;
+    }
+
+    public void setValueHistoryReceiver(ValueHistoryReceiver receiver){
+        valueHistoryReceiver = receiver;
+    }
+
+    /**
+     * Clears the entire history
+     * @param v
+     */
+    public void clearHistory(View v){
+        history.clear();
+        valueHistoryReceiver.updateHistory(history);
     }
 }

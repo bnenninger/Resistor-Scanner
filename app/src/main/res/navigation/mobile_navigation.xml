@@ -14,7 +14,7 @@
     <fragment
         android:id="@+id/navigation_camera"
         android:name="com.example.resistorscanner.ui.dashboard.DashboardFragment"
-        android:label="Camera"
+        android:label="Info"
         tools:layout="@layout/fragment_dashboard" />
 
     <fragment

@@ -19,5 +19,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
+    //info page writing
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="339dp"
+        android:layout_height="455dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="34dp"
+        android:layout_marginEnd="8dp"
+        android:text="Welcome to Resistor Scanner!\n\nTo use the app, simply navigate between the different pages using the navigation bar at the bottom of your screen. On the converter page, use the spinners to select the color based on the color code of the resistor. The value of the resistor will then be displayed automatically. If you would like to save that value, press the save button below the spinners to save the value to the history tab. Then, to access that value again, navigate to the history page where all saved values can be found. \n\nThanks for using our app! "
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_camera" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
