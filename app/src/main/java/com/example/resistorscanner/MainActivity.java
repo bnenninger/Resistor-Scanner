@@ -49,9 +49,35 @@ public class MainActivity extends AppCompatActivity {//implements View.OnClickLi
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
 
+<<<<<<< HEAD
+        Spinner Spinner1 = (Spinner) findViewById(R.id.spinner1);
+        ArrayAdapter<CharSequence> adapterValues = ArrayAdapter.createFromResource(this, R.array.colorsValues, android.R.layout.simple_spinner_item);
+        adapterValues.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        Spinner1.setAdapter(adapterValues);
+        Spinner1.setOnItemSelectedListener(this);
+
+        Spinner Spinner2 = (Spinner) findViewById(R.id.spinner2);
+        adapterValues.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        Spinner2.setAdapter(adapterValues);
+        Spinner2.setOnItemSelectedListener(this);
+
+        Spinner Spinner3 = (Spinner) findViewById(R.id.spinner3);
+        adapterValues.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        Spinner3.setAdapter(adapterValues);
+        Spinner3.setOnItemSelectedListener(this);
+
+        Spinner Spinner4 = (Spinner) findViewById(R.id.spinner4);
+        ArrayAdapter<CharSequence> adapterTolerance = ArrayAdapter.createFromResource(this, R.array.colorsTolerance, android.R.layout.simple_spinner_item);
+        adapterTolerance.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        Spinner4.setAdapter(adapterTolerance);
+        Spinner4.setOnItemSelectedListener(this);
+
+
+=======
         //sets up history object
         //uses linkedlist for fast adding to front of the list
         history = new LinkedList<ResistorValue>();
+>>>>>>> 9392c795a9562c9a8275ea00e2b948efd79ad9f8
     }
 
     /**
